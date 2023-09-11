@@ -13,7 +13,7 @@ class Item:
         :param price: Цена за единицу товара.
         :param quantity: Количество товара в магазине.
         """
-        self.name = name
+        self.__name = name
         self.price = price
         self.quantity = quantity
 
@@ -34,3 +34,46 @@ class Item:
         """
         self.price = self.price * Item.pay_rate
         return self.price
+
+    @property
+    def name(self) -> str:
+        """
+        Геттер для приватного атрибута name..
+        """
+        return self.__name
+
+    @name.setter
+    def name(self, value: str) -> None:
+        """
+        Сеттер для приватного атрибута name.
+
+        :param value: Новое название товара.
+        """
+        if len(value) > 10:
+            value = value[:10]
+        self.__name = value
+
+    @classmethod
+    def instantiate_from_csv(cls, data) -> None:
+        """
+        Класс-метод для инициализации экземпляров класса Item данными из файла src/items.csv.
+        """
+        with open(data, "r", encoding='windows-1251') as file:
+            reader = csv.DictReader(file)
+            for row in reader:
+                item = cls(
+                    name=row["name"],
+                    price=float(row["price"]),
+                    quantity=int(row["quantity"])
+                )
+                cls.all.append(item)
+
+    @staticmethod
+    def string_to_number(string):
+
+
+        number = float(string)
+        number = math.floor(number)
+
+        return number
+
