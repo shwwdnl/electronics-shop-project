@@ -1,3 +1,5 @@
+import math
+import csv
 class Item:
     """
     Класс для представления товара в магазине.
@@ -16,7 +18,7 @@ class Item:
         self.__name = name
         self.price = price
         self.quantity = quantity
-
+        Item.all.append(self)
 
 
     def calculate_total_price(self) -> float:
@@ -44,11 +46,6 @@ class Item:
 
     @name.setter
     def name(self, value: str) -> None:
-        """
-        Сеттер для приватного атрибута name.
-
-        :param value: Новое название товара.
-        """
         if len(value) > 10:
             value = value[:10]
         self.__name = value
@@ -76,4 +73,3 @@ class Item:
         number = math.floor(number)
 
         return number
-
