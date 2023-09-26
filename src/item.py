@@ -79,3 +79,8 @@ class Item:
         number = math.floor(number)
 
         return number
+
+    def __add__(self, other):
+        if isinstance(other, Item):
+            return self.quantity + other.quantity
+
