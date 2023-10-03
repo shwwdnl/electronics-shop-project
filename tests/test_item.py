@@ -44,3 +44,7 @@ class TestItem:
         item = Item("Смартфон", 10000, 20)
         assert repr(item) == "Item('Смартфон', 10000, 20)"
         assert str(item) == 'Смартфон'
+
+    def test_unreal_csv_file(cls):
+        Item.instantiate_from_csv(CSV_PATH='./src/123.csv')
+        assert 'Отсутствует файл items.csv'
