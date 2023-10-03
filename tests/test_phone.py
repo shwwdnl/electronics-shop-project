@@ -1,6 +1,5 @@
-import pytest
 from src import phone
-
+import pytest
 
 @pytest.fixture()
 def test_phone():
@@ -9,6 +8,7 @@ def test_phone():
 @pytest.fixture()
 def test_phone1():
     return phone.Phone("iPhone 11", 47000, 2, 1)
+
 
 def test_init_phone(test_phone):
 
